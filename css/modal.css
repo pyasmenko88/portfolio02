@@ -12,7 +12,7 @@
   z-index: 100;
 }
 
-.modal-overlay.active {
+.modal-overlay.is-open {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
@@ -56,7 +56,7 @@
   }
 }
 
-.modal.active {
+.modal.is-open {
   transform: translateY(0);
   opacity: 1;
   pointer-events: auto;
@@ -113,6 +113,29 @@
   margin-top: 40px;
   margin-bottom: 0px;
   line-height: 60px;
+}
+
+.modal-state {
+  display: flex;
+  min-height: 220px;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 0;
+  color: var(--text-main);
+}
+
+.modal-state--loading p,
+.modal-state--error h2,
+.modal-state--error p {
+  margin: 0;
+}
+
+.modal-state--error h2 {
+  color: var(--text-bright);
+}
+
+.modal-state--error p {
+  margin-top: 8px;
 }
 
 .modal-content img {
