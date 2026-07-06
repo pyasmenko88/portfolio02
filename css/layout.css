@@ -1,0 +1,181 @@
+/* ===========================
+   HEADER
+   =========================== */
+.site-header {
+  background: var(--background-body);      /* белый фон */
+  border-bottom: 1px solid var(--border);  /* тонкая серая линия */
+
+  /* — вот «хак», который растягивает шапку на весь viewport */
+  position: relative;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  box-sizing: border-box;
+}
+
+.site-header__inner {
+  /* уже есть */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  height: 64px;
+
+  /* добавляем: */
+  max-width: 1280px;  /* пусть контент не шире 1280px */
+  margin: 0 auto;     /* центрируем внутри <header> */
+  width: 100%;        /* чтобы padding работал на всю ширину контейнера */
+}
+
+@media (min-width: 768px) {
+  .site-header__inner {
+    padding: 12px 20px;
+    /* max-width/margin остаются без изменений */
+  }
+}
+/* ===========================
+   WELCOME SECTION (avatar + text)
+   =========================== */
+/* Мобильная версия (<768px) */
+/* Styles for the welcome section */
+.welcome {
+  display: block;
+  padding: 0;
+  margin-top: 32px;   /* добавили отступ сверху для мобилки */
+}
+
+.welcome__avatar {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 12px;
+  border-radius: 50%;
+  display: block;
+  object-fit: cover;
+  background: linear-gradient(90deg, var(--background-alt) 0%, var(--background) 50%, var(--background-alt) 100%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+.welcome__avatar.loaded {
+  animation: none;
+  background: none;
+}
+
+/* remove the default top margin from the welcome heading */
+.welcome > h3 {
+  margin-top: 0;
+}
+
+@media (max-width: 767px) {
+  /* no custom margins for headings on mobile */
+}
+
+/* Десктоп (≥768px) */
+@media (min-width: 768px) {
+  .welcome {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: auto auto auto;
+    column-gap: 32px;
+    max-width: 870px;
+    padding: 0;
+    margin-top: 60px;  /* отступ сверху на десктопе */
+  }
+
+  .welcome__avatar {
+    width: 200px;
+    height: 200px;
+    grid-row: 1 / span 3;
+    margin: 0;
+    border-radius: 50%;
+    display: block;
+    object-fit: cover;
+    background: linear-gradient(90deg, var(--background-alt) 0%, var(--background) 50%, var(--background-alt) 100%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+  }
+
+
+  .welcome > h3 {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .welcome > p {
+    grid-column: 2;
+    grid-row: 2;
+    margin: 0 0 1em;
+  }
+  .welcome > a {
+    grid-column: 2;
+    grid-row: 3;
+    max-width: 150px;
+  }
+}
+
+/* ===========================
+   PORTFOLIO SECTION
+   =========================== */
+.portfolio {
+  padding: 0;
+  max-width: 1280px;
+  margin: 40px auto 0;
+  box-sizing: border-box;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 16px;
+}
+
+/* margin bottom for the Portfolio heading */
+.portfolio > h2 {
+  margin-bottom: 24px;
+}
+
+.wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .portfolio {
+    padding: 0;
+    margin-top: 70px;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 24px;
+    row-gap: 24px;
+  }
+  .portfolio > h2 {
+    margin-bottom: 32px;
+  }
+}
+
+/* ===========================
+   CONTACTS SECTION
+   =========================== */
+.contacts {
+  padding: 0;
+  max-width: 1280px;
+  margin: 40px auto 0;
+  box-sizing: border-box;
+  margin-bottom: 60px;
+}
+
+.contacts > h2 {
+  margin-top: 0;
+}
+
+@media (min-width: 768px) {
+  .contacts {
+    padding: 0;
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+}

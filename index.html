@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Портфолио Ясменко Павел</title>
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/modal.css">
+
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#202b38" media="(prefers-color-scheme: dark)">
+
+  <script src="js/images.js" defer></script>
+  <script src="js/modal.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <!-- Логотип -->
+        <a href="#" class="site-logo">
+          <img src="assets/images/ui/logo_light_theme.svg" alt="" class="logo-light">
+          <img src="assets/images/ui/logo_dark_theme.svg"  alt="" class="logo-dark">
+        </a>
+
+        <!-- Кнопка-бургер для мобилки -->
+        <!-- <button class="nav-toggle" aria-label="Открыть меню">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 4h12M2 8h12M2 12h12"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button> -->
+
+        <!-- Навигация -->
+        <nav class="site-nav">
+          <!-- <a href="#resume">Резюме</a> -->
+          <a href="#portfolio">Портфолио</a>
+          <a href="#contacts">Контакты</a>
+        </nav>
+      </div>
+    </header>
+
+  <div class="wrapper">
+    <main>
+      <section class="welcome">
+            <img src="assets/images/ui/ava.png" alt="Pavel Yasmenko" class="welcome__avatar" loading="lazy" />
+              <h3>Привет! Я Павел, продуктовый дизайнер</h3>
+              <p>Создаю интерфейсы, повышающие вовлечённость. Разрабатывал продукты для МТС и Otto Group, сейчас работаю в компании Uzum. Участвовал в запуске крупных фич и редизайнах, повышал качество UX на основе данных и исследований. Реализовал проекты, которые улучшили бизнес-метрики. Работаю автономно, помогаю выстраивать процессы в команде.</p>
+              <a href="assets/docs/Resume_Yasmenko_Pavel.pdf">Смотреть резюме</a>
+      </section>
+
+      <section id="portfolio" class="portfolio">
+        <!--<h2>Портфолио</h2> -->
+        <div class="portfolio-grid">
+          <button class="portfolio-card" type="button" data-case-url="cases/mts-shop.html">
+            <div class="portfolio-card__top">
+              <h2 class="title-desktop">Кейсы МТС Shop</h2>
+              <p class="title-desktop">Переход на дизайн-систему, поиск,<br>ребрендинг, кешбэк, корзина</p>
+              <h3 class="title-mobile">Кейсы МТС Shop</h3>
+              <p class="title-mobile">Переход на дизайн-систему, поиск, ребрендинг, кешбэк, корзина</p>
+            </div>
+            <div class="portfolio-card__image">
+              <img src="https://img4.teletype.in/files/f9/16/f9169681-7ade-4a16-b612-420564100125.png" alt="МТС Кейсы" loading="lazy" />
+            </div>
+          </button>
+          <button class="portfolio-card" type="button" data-case-url="cases/generative.html">
+            <div class="portfolio-card__top">
+              <h2 class="title-desktop">Генеративная графика</h2>
+              <p class="title-desktop">Примеры генераций по заданному стилю<br>и синтетические стоковые фото</p>
+              <h3 class="title-mobile">Генеративная графика</h3>
+              <p class="title-mobile">Примеры генераций по заданному стилю и синтетические стоковые фото</p>
+            </div>
+            <div class="portfolio-card__image">
+              <img src="https://img1.teletype.in/files/cb/0a/cb0ab7ce-fde9-44f6-b57c-fcd4f6ec12c4.png" alt="Генеративная графика" loading="lazy" />
+            </div>
+          </button>
+          <button class="portfolio-card" type="button" data-case-url="cases/aic.html">
+            <div class="portfolio-card__top">
+              <h2 class="title-desktop">Редизайн магазина</h2>
+              <p class="title-desktop">Редизайн веб версии интернет-<br>магазина МТС со студией AIC</p>
+              <h3 class="title-mobile">Редизайн магазина</h3>
+              <p class="title-mobile">Редизайн веб версии интернет-магазина МТС со студией AIC</p>
+            </div>
+            <div class="portfolio-card__image">
+              <img src="https://img3.teletype.in/files/64/b5/64b51163-8a7a-459b-9ac9-a04f0413adac.png" alt="Редизайн магазина" loading="lazy" />
+            </div>
+          </button>
+          <button class="portfolio-card" type="button" data-case-url="cases/mytoys.html">
+            <div class="portfolio-card__top">
+              <h2 class="title-desktop">myToys</h2>
+              <p class="title-desktop">Приложение для интернет-<br>магазина myToys</p>
+              <h3 class="title-mobile">myToys</h3>
+              <p class="title-mobile">Приложение для интернет-<br>магазина myToys</p>
+            </div>
+            <div class="portfolio-card__image">
+              <img src="https://img4.teletype.in/files/f0/5a/f05aa128-4957-4521-94eb-0bf38f22e188.png" alt="myToys Кейс" loading="lazy" />
+            </div>
+          </button>
+        </div>
+      </section>
+      <section id="contacts" class="contacts">
+      <!--  <h2>Контакты</h2> -->
+        <p>pyasmenko@mail.ru</p>
+      </section>
+  </main>
+  </div>
+
+  <div id="modal-overlay" class="modal-overlay"></div>
+  <div id="modal" class="modal">
+    <button id="modal-close" class="modal-close" aria-label="Закрыть">
+      <svg class="modal-close__icon" width="10" height="10" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M11.286 20.714L20.714 11.286" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M11.286 11.286L20.714 20.714" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <div class="modal-content">
+
+    </div>
+  </div>
+</body>
+</html>
