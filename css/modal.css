@@ -87,6 +87,11 @@
   border-radius: 8px;
 }
 
+.modal-close:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
 .modal-close__icon {
   position: relative;
   width: 32px;
@@ -103,6 +108,14 @@
 }
 .modal-content::-webkit-scrollbar {
   display: none;
+}
+
+.modal-content a:focus-visible,
+.modal-content button:focus-visible,
+.modal-content [tabindex]:focus-visible {
+  border-radius: 8px;
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
 }
 
 .modal-content h2 {
