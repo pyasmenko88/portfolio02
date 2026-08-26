@@ -197,6 +197,16 @@
   opacity: 1;
 }
 
+.portfolio-card.load-error::before,
+.portfolio-card.load-error .portfolio-card__image::before {
+  opacity: 0;
+  animation: none;
+}
+
+.portfolio-card.load-error .portfolio-card__image img {
+  opacity: 0;
+}
+
 @keyframes skeleton-loading {
   0% {
     background-position: 200% 0;

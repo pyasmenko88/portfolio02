@@ -49,6 +49,11 @@
   background: none;
 }
 
+.welcome__avatar.load-error {
+  animation: none;
+  background: var(--background-alt);
+}
+
 /* remove the default top margin from the welcome heading */
 .welcome > h3 {
   margin-top: 0;

@@ -1,16 +1,26 @@
 (function () {
   function markLoadedImage(image, loadedClassTarget) {
     function onLoad() {
+      loadedClassTarget.classList.remove('load-error');
       loadedClassTarget.classList.add('loaded');
     }
 
+    function onError() {
+      loadedClassTarget.classList.remove('loaded');
+      loadedClassTarget.classList.add('load-error');
+    }
+
     if (image.complete) {
-      onLoad();
+      if (image.naturalWidth > 0) {
+        onLoad();
+      } else {
+        onError();
+      }
       return;
     }
 
     image.addEventListener('load', onLoad, { once: true });
-    image.addEventListener('error', onLoad, { once: true });
+    image.addEventListener('error', onError, { once: true });
   }
 
   function initImageLoadedStates(root = document) {

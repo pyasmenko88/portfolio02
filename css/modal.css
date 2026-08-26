@@ -172,3 +172,8 @@
   animation: none;
   background: none;
 }
+
+.modal-content img.load-error {
+  animation: none;
+  background: var(--background-alt);
+}
