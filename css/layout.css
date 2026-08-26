@@ -28,12 +28,6 @@
   width: 100%;        /* чтобы padding работал на всю ширину контейнера */
 }
 
-@media (min-width: 768px) {
-  .site-header__inner {
-    padding: 12px 20px;
-    /* max-width/margin остаются без изменений */
-  }
-}
 /* ===========================
    WELCOME SECTION (avatar + text)
    =========================== */
@@ -65,10 +59,6 @@
 /* remove the default top margin from the welcome heading */
 .welcome > h3 {
   margin-top: 0;
-}
-
-@media (max-width: 767px) {
-  /* no custom margins for headings on mobile */
 }
 
 /* Десктоп (≥768px) */
@@ -129,11 +119,6 @@
   row-gap: 16px;
 }
 
-/* margin bottom for the Portfolio heading */
-.portfolio > h2 {
-  margin-bottom: 24px;
-}
-
 .wrapper {
   max-width: 1280px;
   margin: 0 auto;
@@ -152,9 +137,6 @@
     column-gap: 24px;
     row-gap: 24px;
   }
-  .portfolio > h2 {
-    margin-bottom: 32px;
-  }
 }
 
 /* ===========================
@@ -166,10 +148,6 @@
   margin: 40px auto 0;
   box-sizing: border-box;
   margin-bottom: 60px;
-}
-
-.contacts > h2 {
-  margin-top: 0;
 }
 
 @media (min-width: 768px) {

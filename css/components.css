@@ -14,19 +14,6 @@
   height: auto;
 }
 
-.nav-toggle {
-  background: none;
-  border: none;
-  padding: 4px;
-  cursor: pointer;
-  color: var(--gray-700);
-}
-@media (min-width: 768px) {
-  .nav-toggle {
-    display: none;
-  }
-}
-
 .site-nav {
   display: none;
 }
@@ -81,9 +68,6 @@
     /* 1. текст medium */
     font-weight: 500;
 
-    /* 2. border-radius 12px */
-    border-radius: 12px;
-
     /* 4. плавный переход при наведении */
     transition: background-color 0.2s ease;
   }
@@ -92,29 +76,6 @@
     background-color: var(--background);
   }
 }
-
-/* ——————————————————————
-   BURGER BUTTON
-   —————————————————————— */
- .nav-toggle {
-   /* 1) Сбросим любые внешние отступы */
-   margin: 0;
-
-   /* 2) Сделаем кнопку флексом, чтобы центрировать SVG */
-   display: flex;
-   align-items: center;
-   justify-content: center;
-
-   /* 3) Гарантируем минимум 40×40 области клика */
-   min-width: 40px;
-   min-height: 40px;
-
-   /* 4) Убираем лишние паддинги */
-   padding: 0;
-
-   background-color: var(--background) !important;
-
- }
 
 .portfolio-card {
   border: 0;
