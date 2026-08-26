@@ -4,13 +4,6 @@
 .site-header {
   background: var(--background-body);      /* белый фон */
   border-bottom: 1px solid var(--border);  /* тонкая серая линия */
-
-  /* — вот «хак», который растягивает шапку на весь viewport */
-  position: relative;
-  left: 50%;
-  width: 100vw;
-  transform: translateX(-50%);
-  box-sizing: border-box;
 }
 
 .site-header__inner {
