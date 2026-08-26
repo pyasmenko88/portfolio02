@@ -68,15 +68,7 @@
       modal.setAttribute('aria-label', 'Кейс портфолио');
     }
 
-    function setLoadingState() {
-      modal.classList.add('is-loading');
-      modal.classList.remove('has-error');
-      content.innerHTML = '<div class="modal-state modal-state--loading"><p>Загрузка кейса…</p></div>';
-      setModalLabel();
-    }
-
     function setErrorState(error) {
-      modal.classList.remove('is-loading');
       modal.classList.add('has-error');
       content.innerHTML = [
         '<div class="modal-state modal-state--error">',
@@ -106,7 +98,7 @@
       }
 
       cancelActiveRequest();
-      modal.classList.remove('is-open', 'is-loading', 'has-error');
+      modal.classList.remove('is-open', 'has-error');
       overlay.classList.remove('is-open');
       modal.setAttribute('aria-hidden', 'true');
       modal.removeAttribute('aria-labelledby');
@@ -199,9 +191,6 @@
       const requestId = activeRequestId;
       activeController = new AbortController();
 
-      showModal();
-      setLoadingState();
-
       try {
         const caseHtml = await loadCase(caseUrl, requestId, activeController.signal);
         if (requestId !== activeRequestId) {
@@ -210,18 +199,20 @@
 
         activeController = null;
         content.innerHTML = caseHtml;
-        modal.classList.remove('is-loading', 'has-error');
+        modal.classList.remove('has-error');
         setModalLabel();
 
         if (window.PortfolioImages) {
           window.PortfolioImages.initModalImageLoadedStates(content);
         }
+        showModal();
       } catch (error) {
         if (error.name === 'AbortError' || requestId !== activeRequestId) {
           return;
         }
         activeController = null;
         setErrorState(error);
+        showModal();
       }
     }
 

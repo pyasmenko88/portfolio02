@@ -137,7 +137,6 @@
   color: var(--text-main);
 }
 
-.modal-state--loading p,
 .modal-state--error h2,
 .modal-state--error p {
   margin: 0;
