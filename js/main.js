@@ -1,8 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.contacts__email[data-email]').forEach((button) => {
-    const status = button.parentElement.querySelector('.contacts__copy-status');
-    let statusTimer;
+  const toast = document.querySelector('.toast');
+  let toastTimer;
 
+  function showToast(message) {
+    if (!toast) {
+      return;
+    }
+
+    toast.textContent = message;
+    toast.classList.add('is-visible');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      toast.classList.remove('is-visible');
+    }, 1800);
+  }
+
+  document.querySelectorAll('.contacts__email[data-email]').forEach((button) => {
     function copyWithFallback(text) {
       const textarea = document.createElement('textarea');
       textarea.value = text;
@@ -39,12 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         copied = copyWithFallback(email);
       }
 
-      status.textContent = copied ? 'Скопировано' : 'Не удалось скопировать';
-      status.classList.add('is-visible');
-      clearTimeout(statusTimer);
-      statusTimer = setTimeout(() => {
-        status.classList.remove('is-visible');
-      }, 1800);
+      showToast(copied ? 'Email скопирован' : 'Не удалось скопировать');
     }
 
     button.addEventListener('click', copyEmail);

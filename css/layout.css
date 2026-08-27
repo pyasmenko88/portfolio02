@@ -148,12 +148,6 @@
   margin-bottom: 60px;
 }
 
-.contacts__email-row {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-}
-
 .contacts__email {
   appearance: none;
   border: 0;
@@ -165,16 +159,28 @@
   cursor: pointer;
 }
 
-.contacts__copy-status {
-  min-width: 160px;
-  color: inherit;
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: max(24px, env(safe-area-inset-bottom));
+  z-index: 110;
+  max-width: calc(100vw - 32px);
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: var(--text-bright);
+  color: var(--background-body);
   font-size: 14px;
+  line-height: 20px;
+  white-space: nowrap;
   opacity: 0;
-  transition: opacity 0.2s ease;
+  transform: translate(-50%, 8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
 }
 
-.contacts__copy-status.is-visible {
-  opacity: 0.65;
+.toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
 }
 
 @media (min-width: 768px) {
