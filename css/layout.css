@@ -148,6 +148,11 @@
   margin-bottom: 60px;
 }
 
+.contacts a {
+  color: inherit;
+  text-decoration: none;
+}
+
 @media (min-width: 768px) {
   .contacts {
     padding: 0;
