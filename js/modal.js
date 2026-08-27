@@ -20,9 +20,11 @@
     }
 
     const caseCache = new Map();
+    const caseRequests = new Map();
     let activeController = null;
     let activeRequestId = 0;
     let openerCard = null;
+    let pendingCard = null;
     let savedScrollY = 0;
 
     function isModalOpen() {
@@ -47,11 +49,30 @@
     }
 
     function cancelActiveRequest() {
+      clearPendingCard();
+
       if (activeController) {
         activeController.abort();
         activeController = null;
       }
       activeRequestId += 1;
+    }
+
+    function setPendingCard(card) {
+      clearPendingCard();
+      pendingCard = card;
+      pendingCard.classList.add('is-pending');
+      pendingCard.setAttribute('aria-busy', 'true');
+    }
+
+    function clearPendingCard() {
+      if (!pendingCard) {
+        return;
+      }
+
+      pendingCard.classList.remove('is-pending');
+      pendingCard.removeAttribute('aria-busy');
+      pendingCard = null;
     }
 
     function setModalLabel() {
@@ -159,21 +180,72 @@
       }
     }
 
-    async function loadCase(caseUrl, requestId, signal) {
+    function loadCase(caseUrl) {
       if (caseCache.has(caseUrl)) {
-        return caseCache.get(caseUrl);
+        return Promise.resolve(caseCache.get(caseUrl));
       }
 
-      const response = await fetch(caseUrl, { signal });
-      if (!response.ok) {
-        throw new Error(`Failed to load ${caseUrl}: ${response.status}`);
+      if (caseRequests.has(caseUrl)) {
+        return caseRequests.get(caseUrl);
       }
 
-      const caseHtml = await response.text();
-      if (requestId === activeRequestId) {
-        caseCache.set(caseUrl, caseHtml);
+      const request = fetch(caseUrl)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`Failed to load ${caseUrl}: ${response.status}`);
+          }
+
+          return response.text();
+        })
+        .then((caseHtml) => {
+          caseCache.set(caseUrl, caseHtml);
+          return caseHtml;
+        })
+        .finally(() => {
+          caseRequests.delete(caseUrl);
+        });
+
+      caseRequests.set(caseUrl, request);
+      return request;
+    }
+
+    function waitForCase(caseUrl, signal) {
+      if (!signal) {
+        return loadCase(caseUrl);
       }
-      return caseHtml;
+
+      if (signal.aborted) {
+        return Promise.reject(new DOMException('The operation was aborted.', 'AbortError'));
+      }
+
+      return new Promise((resolve, reject) => {
+        const handleAbort = () => {
+          reject(new DOMException('The operation was aborted.', 'AbortError'));
+        };
+
+        signal.addEventListener('abort', handleAbort, { once: true });
+        loadCase(caseUrl).then(
+          (caseHtml) => {
+            signal.removeEventListener('abort', handleAbort);
+            resolve(caseHtml);
+          },
+          (error) => {
+            signal.removeEventListener('abort', handleAbort);
+            reject(error);
+          },
+        );
+      });
+    }
+
+    function prefetchCases() {
+      cards.forEach((card) => {
+        const caseUrl = card.getAttribute('data-case-url');
+        if (!caseUrl) {
+          return;
+        }
+
+        loadCase(caseUrl).catch(() => {});
+      });
     }
 
     async function openModal(event) {
@@ -187,17 +259,19 @@
 
       cancelActiveRequest();
       openerCard = card;
+      setPendingCard(card);
 
       const requestId = activeRequestId;
       activeController = new AbortController();
 
       try {
-        const caseHtml = await loadCase(caseUrl, requestId, activeController.signal);
+        const caseHtml = await waitForCase(caseUrl, activeController.signal);
         if (requestId !== activeRequestId) {
           return;
         }
 
         activeController = null;
+        clearPendingCard();
         content.innerHTML = caseHtml;
         modal.classList.remove('has-error');
         setModalLabel();
@@ -211,6 +285,7 @@
           return;
         }
         activeController = null;
+        clearPendingCard();
         setErrorState(error);
         showModal();
       }
@@ -219,6 +294,12 @@
     cards.forEach((card) => {
       card.addEventListener('click', openModal);
     });
+
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(prefetchCases);
+    } else {
+      window.setTimeout(prefetchCases, 0);
+    }
 
     overlay.addEventListener('click', closeModal);
     closeBtn.addEventListener('click', closeModal);

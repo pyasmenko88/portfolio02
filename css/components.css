@@ -92,6 +92,11 @@
   width: 100%;
   position: relative;
   cursor: pointer;
+  transition: transform 0.15s ease-out;
+}
+
+.portfolio-card.is-pending {
+  transform: scale(0.995);
 }
 
 @media (min-width: 768px) {
