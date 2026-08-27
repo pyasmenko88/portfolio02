@@ -152,14 +152,22 @@
   appearance: none;
   display: inline-flex;
   align-items: center;
-  gap: 7px;
+  gap: 12px;
   border: 0;
   padding: 0;
+  border-radius: 12px;
   background: none;
   color: inherit;
   font: inherit;
   text-align: left;
   cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+@media (hover: hover) {
+  .contacts__email:hover {
+    background-color: var(--background);
+  }
 }
 
 .contacts__email-icon {
