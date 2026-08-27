@@ -161,9 +161,8 @@
   border-radius: 24px;
   object-fit: cover;
   transition: opacity 0.3s ease-in-out;
-  background: linear-gradient(90deg, var(--background-alt) 0%, var(--background-alt) 25%, var(--background-alt) 35%, var(--background) 45%, var(--background) 55%, var(--background-alt) 65%, var(--background-alt) 75%, var(--background-alt) 100%);
-  background-size: 300% 100%;
-  animation: skeleton-loading 2.4s infinite;
+  background-color: var(--background-alt);
+  animation: skeleton-breathing 3.2s ease-in-out infinite alternate;
 }
 
 .modal-content img.loaded {
