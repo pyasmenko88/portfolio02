@@ -170,9 +170,9 @@
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(90deg, var(--background-alt) 0%, var(--background) 50%, var(--background-alt) 100%);
-  background-size: 200% 100%;
-  animation: skeleton-loading 1.5s infinite;
+  background: linear-gradient(90deg, var(--background-alt) 0%, var(--background-alt) 25%, var(--background-alt) 35%, var(--background) 45%, var(--background) 55%, var(--background-alt) 65%, var(--background-alt) 75%, var(--background-alt) 100%);
+  background-size: 300% 100%;
+  animation: skeleton-loading 2.4s infinite;
   transition: opacity 0.3s ease-in-out;
 }
 
@@ -196,9 +196,9 @@
 
 @keyframes skeleton-loading {
   0% {
-    background-position: 200% 0;
+    background-position: 150% 0;
   }
   100% {
-    background-position: -200% 0;
+    background-position: -150% 0;
   }
 }
