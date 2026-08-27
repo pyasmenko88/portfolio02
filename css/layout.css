@@ -39,8 +39,9 @@
   border-radius: 50%;
   display: block;
   object-fit: cover;
-  background-color: var(--background-alt);
-  animation: skeleton-breathing 3.2s ease-in-out infinite alternate;
+  background: linear-gradient(100deg, var(--background-alt) 35%, var(--background) 50%, var(--background-alt) 65%);
+  background-size: 250% 100%;
+  animation: skeleton-loading 6s ease-in-out infinite;
 }
 
 .welcome__avatar.loaded {
@@ -78,8 +79,9 @@
     border-radius: 50%;
     display: block;
     object-fit: cover;
-    background-color: var(--background-alt);
-    animation: skeleton-breathing 3.2s ease-in-out infinite alternate;
+    background: linear-gradient(100deg, var(--background-alt) 35%, var(--background) 50%, var(--background-alt) 65%);
+    background-size: 250% 100%;
+    animation: skeleton-loading 6s ease-in-out infinite;
   }
 
 
