@@ -113,8 +113,20 @@
         </div>
       </section>
       <section id="contacts" class="contacts">
-        <p>
-          <a href="mailto:pyasmenko@mail.ru">pyasmenko@mail.ru</a>
+        <p class="contacts__email-row">
+          <button
+            class="contacts__email"
+            type="button"
+            data-email="pyasmenko@mail.ru"
+            aria-label="Скопировать email pyasmenko@mail.ru"
+          >
+            pyasmenko@mail.ru
+          </button>
+          <span
+            class="contacts__copy-status"
+            role="status"
+            aria-live="polite"
+          ></span>
         </p>
       </section>
   </main>
